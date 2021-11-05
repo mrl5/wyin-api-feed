@@ -5,5 +5,13 @@
   "main": "build/server.js",
   "repository": "https://gitlab.com/spio-wyin/wyin-api-feed",
   "author": "mrl5",
-  "license": "MPL-2.0"
+  "license": "MPL-2.0",
+  "scripts": {
+    "prepare": "git config --local core.hooksPath .githooks || echo 'Could not set git hooks'",
+    "lint:commit": "commitlint"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0"
+  }
 }
