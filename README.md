@@ -32,3 +32,8 @@ docker run --rm -p 3000:3000 wyin-api-feed:latest
 ```
 curl -i http://localhost:3000/health
 ```
+
+
+## API docs
+(Make sure that server is running)
+* [Swagger UI](http://localhost:3000/docs)
