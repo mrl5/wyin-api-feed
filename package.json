@@ -1,0 +1,9 @@
+{
+  "name": "wyin-api-feed",
+  "version": "0.0.1",
+  "description": "REST API serving historical events",
+  "main": "build/server.js",
+  "repository": "https://gitlab.com/spio-wyin/wyin-api-feed",
+  "author": "mrl5",
+  "license": "MPL-2.0"
+}
