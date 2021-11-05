@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e -u -o pipefail
+
+main() {
+    if has_src_or_tests_changed; then
+        exit_on_lint_error
+    fi
+}
+
+exit_on_lint_error() {
+    yarn run lint:ci
+}
+
+has_src_or_tests_changed() {
+    git diff --cached --name-only | \
+        grep -q -E "(src/|tests/)"
+}
+
+main "$@"
