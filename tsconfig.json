@@ -3,7 +3,6 @@
 
   "compilerOptions": {
     "outDir": "dist",
-    "composite": true,
 
     "incremental": true,
 
@@ -24,9 +23,7 @@
     "baseUrl": ".",
 
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-
-    "resolveJsonModule": true
+    "emitDecoratorMetadata": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

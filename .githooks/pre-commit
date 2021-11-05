@@ -5,6 +5,8 @@ set -e -u -o pipefail
 main() {
     if has_src_or_tests_changed; then
         exit_on_lint_error
+        yarn run tsoa
+        git add spec
     fi
 }
 

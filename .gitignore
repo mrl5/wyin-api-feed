@@ -2,7 +2,8 @@
 *.swp
 
 # project specific
-tsconfig.tsbuildinfo
 dist
+build
+tsconfig.tsbuildinfo
 node_modules
 yarn-error.log
