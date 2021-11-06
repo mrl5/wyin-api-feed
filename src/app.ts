@@ -11,6 +11,10 @@ export const app = express();
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
+app.get('/security.txt', (_req, res) => {
+    res.redirect(301, '/.well-known/security.txt');
+});
+
 app.use('/docs', serve, async (_req: ExRequest, res: ExResponse) => {
     return res.send(generateHTML(spec));
 });
