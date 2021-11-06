@@ -5,6 +5,9 @@ set -e -u -o pipefail
 main() {
     if has_src_or_tests_changed; then
         exit_on_lint_error
+    fi
+
+    if should_regen_spec; then
         yarn run tsoa
         git add spec
     fi
@@ -17,6 +20,11 @@ exit_on_lint_error() {
 has_src_or_tests_changed() {
     git diff --cached --name-only | \
         grep -q -E "(src/|tests/)"
+}
+
+should_regen_spec() {
+    git diff --cached --name-only | \
+        grep -q -E "(src/|package.json)"
 }
 
 main "$@"
