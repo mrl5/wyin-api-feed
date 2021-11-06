@@ -1,12 +1,16 @@
-import { Controller, Get, Path, Res, Route, TsoaResponse, Query } from 'tsoa';
+import { Controller, Get, Path, Res, Response, Route, TsoaResponse, Query } from 'tsoa';
 import { Language, Time, Year } from './types';
 import { EventService } from './eventService';
 import { SingleHistoryEvent } from './singleHistoryEvent';
 import { NotFoundEvent } from './notFoundEvent';
 import { errors } from './errors';
+import { BadRequestError } from '../genericErrors';
+import { ValidateErrorJson, BadRequestJson } from '../genericTypes';
 
 @Route('history/event')
 export class HistoryEventController extends Controller {
+    @Response<ValidateErrorJson>(422, 'Validation Failed')
+    @Response<BadRequestJson>(400, 'Bad Request')
     @Get()
     async getEventByTime(
         @Res() notFoundResponse: TsoaResponse<404, NotFoundEvent>,
@@ -25,6 +29,8 @@ export class HistoryEventController extends Controller {
         }
     }
 
+    @Response<ValidateErrorJson>(422, 'Validation Failed')
+    @Response<BadRequestJson>(400, 'Bad Request')
     @Get('/{year}')
     async getEventByYear(
         @Res() notFoundResponse: TsoaResponse<404, NotFoundEvent>,
@@ -39,6 +45,11 @@ export class HistoryEventController extends Controller {
             if (err instanceof errors.NotFoundError) {
                 return notFoundResponse(404, getNotFoundBody(err));
             }
+
+            if (err instanceof errors.WyinFeedError) {
+                throw new BadRequestError(err.message);
+            }
+
             throw err;
         }
     }

@@ -53,6 +53,47 @@
 				"type": "object",
 				"additionalProperties": {}
 			},
+			"ValidateErrorJson": {
+				"properties": {
+					"message": {
+						"type": "string",
+						"enum": [
+							"Validation failed"
+						],
+						"nullable": false
+					},
+					"details": {
+						"properties": {},
+						"additionalProperties": {},
+						"type": "object"
+					}
+				},
+				"required": [
+					"message",
+					"details"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BadRequestJson": {
+				"properties": {
+					"message": {
+						"type": "string",
+						"enum": [
+							"Bad Request"
+						],
+						"nullable": false
+					},
+					"details": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"NotFoundCodeEnum": {
 				"type": "string",
 				"enum": [
@@ -467,12 +508,32 @@
 							}
 						}
 					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BadRequestJson"
+								}
+							}
+						}
+					},
 					"404": {
 						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/NotFoundEvent"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJson"
 								}
 							}
 						}
@@ -513,12 +574,32 @@
 							}
 						}
 					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BadRequestJson"
+								}
+							}
+						}
+					},
 					"404": {
 						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/NotFoundEvent"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Failed",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJson"
 								}
 							}
 						}

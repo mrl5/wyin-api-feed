@@ -252,10 +252,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@spio-wyin/wyin-sdk-feed@^1.0.0":
-  version "1.0.0"
-  resolved "https://gitlab.com/api/v4/projects/30319794/packages/npm/@spio-wyin/wyin-sdk-feed/-/@spio-wyin/wyin-sdk-feed-1.0.0.tgz#87050423fa3883b5c49ef888ca9eb9439d28f469"
-  integrity sha1-hwUEI/o4g7XEnviIyp65Q50o9Gk=
+"@spio-wyin/wyin-sdk-feed@^1.0.1":
+  version "1.0.1"
+  resolved "https://gitlab.com/api/v4/projects/30319794/packages/npm/@spio-wyin/wyin-sdk-feed/-/@spio-wyin/wyin-sdk-feed-1.0.1.tgz#e3ca62e4a0f41b92ffeb5a592ce7f0b07017b7fa"
+  integrity sha1-48pi5KD0G5L/61pZLOfwsHAXt/o=
   dependencies:
     "@types/cheerio" "^0.22.30"
     "@types/romans" "2.0.0"
