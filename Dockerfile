@@ -1,6 +1,6 @@
 # https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile
 FROM node:14 AS prd-env
-COPY package.json yarn.lock tsconfig.json tsoa.json /app/
+COPY .yarnrc package.json yarn.lock tsconfig.json tsoa.json /app/
 WORKDIR /app
 RUN yarn install --production --frozen-lockfile
 
