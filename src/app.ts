@@ -1,22 +1,18 @@
 import express, { Response as ExResponse, Request as ExRequest, NextFunction } from 'express';
 import { ValidateError } from 'tsoa';
-import bodyParser from 'body-parser';
-import swaggerUi from 'swagger-ui-express';
+import { urlencoded, json } from 'body-parser';
+import { serve, generateHTML } from 'swagger-ui-express';
 import spec from '../spec/swagger.json';
 import { RegisterRoutes } from '../build/routes';
 import { BadRequestError } from './genericErrors';
 
 export const app = express();
 
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    }),
-);
-app.use(bodyParser.json());
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
-app.use('/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
-    return res.send(swaggerUi.generateHTML(spec));
+app.use('/docs', serve, async (_req: ExRequest, res: ExResponse) => {
+    return res.send(generateHTML(spec));
 });
 
 RegisterRoutes(app);
