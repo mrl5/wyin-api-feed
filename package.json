@@ -14,8 +14,8 @@
     "start": "node dist/src/server.js",
     "dev": "concurrently 'nodemon' 'nodemon -x tsoa spec-and-routes'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
-    "lint:ci": "eslint '*/**/*.{js,ts,tsx}' --max-warnings=0",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix && tsc --noEmit --pretty",
+    "lint:ci": "eslint '*/**/*.{js,ts,tsx}' --max-warnings=0 && tsc --noEmit --pretty",
     "lint:commit": "commitlint"
   },
   "dependencies": {
