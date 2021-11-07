@@ -560,6 +560,44 @@
 				]
 			}
 		},
+		"/history/event/random": {
+			"get": {
+				"operationId": "GetEventByRandom",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SingleHistoryEvent"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NotFoundEvent"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "lang",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/Language"
+						}
+					}
+				]
+			}
+		},
 		"/history/event/{year}": {
 			"get": {
 				"operationId": "GetEventByYear",
@@ -615,44 +653,6 @@
 							"$ref": "#/components/schemas/Year"
 						}
 					},
-					{
-						"in": "query",
-						"name": "lang",
-						"required": false,
-						"schema": {
-							"$ref": "#/components/schemas/Language"
-						}
-					}
-				]
-			}
-		},
-		"/history/event/random": {
-			"get": {
-				"operationId": "GetEventByRandom",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/SingleHistoryEvent"
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/NotFoundEvent"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
 					{
 						"in": "query",
 						"name": "lang",

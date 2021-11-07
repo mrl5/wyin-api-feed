@@ -27,6 +27,23 @@ export class HistoryEventController extends Controller {
         }
     }
 
+    @Get('/random')
+    async getEventByRandom(
+        @Res() notFoundResponse: TsoaResponse<404, NotFoundEvent>,
+        @Query() lang?: Language,
+    ): Promise<SingleHistoryEvent> {
+        try {
+            const s = new EventService();
+            const result = await s.getEventByRandom(lang);
+            return result;
+        } catch (err) {
+            if (err instanceof NotFoundError) {
+                return notFoundResponse(404, getNotFoundBody(err));
+            }
+            throw err;
+        }
+    }
+
     @Response<ValidateErrorJson>(422, 'Validation Failed')
     @Response<BadRequestJson>(400, 'Bad Request')
     @Get('/{year}')
@@ -48,23 +65,6 @@ export class HistoryEventController extends Controller {
                 throw new BadRequestError(err.message);
             }
 
-            throw err;
-        }
-    }
-
-    @Get('/random')
-    async getEventByRandom(
-        @Res() notFoundResponse: TsoaResponse<404, NotFoundEvent>,
-        @Query() lang?: Language,
-    ): Promise<SingleHistoryEvent> {
-        try {
-            const s = new EventService();
-            const result = await s.getEventByRandom(lang);
-            return result;
-        } catch (err) {
-            if (err instanceof NotFoundError) {
-                return notFoundResponse(404, getNotFoundBody(err));
-            }
             throw err;
         }
     }
