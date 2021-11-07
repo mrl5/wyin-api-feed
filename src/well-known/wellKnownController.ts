@@ -1,5 +1,5 @@
 import { Response as ExResponse, Request as ExRequest } from 'express';
-import { Controller, Get, Hidden, Request, Route } from 'tsoa';
+import { Controller, Get, Hidden, Request, Route } from '@tsoa/runtime';
 import { WellKnownService } from './wellKnownService';
 
 @Hidden() // https://github.com/lukeautry/tsoa/issues/1126

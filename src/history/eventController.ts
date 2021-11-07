@@ -1,4 +1,4 @@
-import { Controller, Get, Path, Res, Response, Route, TsoaResponse, Query } from 'tsoa';
+import { Controller, Get, Path, Res, Response, Route, TsoaResponse, Query } from '@tsoa/runtime';
 import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent } from './types';
 import { EventService } from './eventService';
 import { NotFoundError, WyinFeedError } from './errors';

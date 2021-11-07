@@ -1,5 +1,5 @@
 import express, { Response as ExResponse, Request as ExRequest, NextFunction } from 'express';
-import { ValidateError } from 'tsoa';
+import { ValidateError } from '@tsoa/runtime';
 import { urlencoded, json } from 'body-parser';
 import { serve, generateHTML } from 'swagger-ui-express';
 import spec from '../spec/swagger.json';

@@ -3941,14 +3941,6 @@ tslib@^2, tslib@^2.2.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
-tsoa@^3.14.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/tsoa/-/tsoa-3.14.0.tgz#373106f9220acd7016e4a3a288cdb48e517ef570"
-  integrity sha512-V4XBQ63Hk3LrkNGuZqMvJaLcwjUf/B3zaEwBr7gFPrYjPr/eRU8xXbdEcp3XoI90gakdcHG6gCNd/RqifrhaUQ==
-  dependencies:
-    "@tsoa/cli" "^3.14.0"
-    "@tsoa/runtime" "^3.13.0"
-
 tsutils@^3.21.0:
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.21.0.tgz#b48717d394cea6c1e096983eed58e9d61715b623"
