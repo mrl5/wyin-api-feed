@@ -1,9 +1,7 @@
 import { Controller, Get, Path, Res, Response, Route, TsoaResponse, Query } from 'tsoa';
-import { Language, Time, Year } from './types';
+import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent } from './types';
 import { EventService } from './eventService';
-import { SingleHistoryEvent } from './singleHistoryEvent';
-import { NotFoundEvent } from './notFoundEvent';
-import { errors } from './errors';
+import { NotFoundError, WyinFeedError } from './errors';
 import { BadRequestError } from '../genericErrors';
 import { ValidateErrorJson, BadRequestJson } from '../genericTypes';
 
@@ -22,7 +20,7 @@ export class HistoryEventController extends Controller {
             const result = await s.getEventByTime(t, lang);
             return result;
         } catch (err) {
-            if (err instanceof errors.NotFoundError) {
+            if (err instanceof NotFoundError) {
                 return notFoundResponse(404, getNotFoundBody(err));
             }
             throw err;
@@ -42,11 +40,11 @@ export class HistoryEventController extends Controller {
             const result = await s.getEventByYear(year, lang);
             return result;
         } catch (err) {
-            if (err instanceof errors.NotFoundError) {
+            if (err instanceof NotFoundError) {
                 return notFoundResponse(404, getNotFoundBody(err));
             }
 
-            if (err instanceof errors.WyinFeedError) {
+            if (err instanceof WyinFeedError) {
                 throw new BadRequestError(err.message);
             }
 
@@ -64,7 +62,7 @@ export class HistoryEventController extends Controller {
             const result = await s.getEventByRandom(lang);
             return result;
         } catch (err) {
-            if (err instanceof errors.NotFoundError) {
+            if (err instanceof NotFoundError) {
                 return notFoundResponse(404, getNotFoundBody(err));
             }
             throw err;
@@ -72,7 +70,7 @@ export class HistoryEventController extends Controller {
     }
 }
 
-function getNotFoundBody(err: errors.NotFoundError): NotFoundEvent {
+function getNotFoundBody(err: NotFoundError): NotFoundEvent {
     const year = Number(err.year);
     return {
         year,

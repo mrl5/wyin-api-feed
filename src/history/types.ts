@@ -1,3 +1,1 @@
-import { Language, Time, Year } from '@spio-wyin/wyin-sdk-feed';
-
-export { Language, Time, Year };
+export { Language, Time, Year, SingleHistoryEvent, NotFoundEvent } from '@spio-wyin/wyin-sdk-feed';
